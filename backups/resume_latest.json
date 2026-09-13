@@ -1,0 +1,28 @@
+{
+  "basics": {
+    "name": "Chan Kwok Ferng",
+    "label": "Software Engineer",
+    "email": "ferng@example.com",
+    "summary": "Full Stack Developer proficient in Next.js, React, TypeScript, and Prisma."
+  },
+  "skills": [
+    "Next.js 16",
+    "React 19",
+    "TypeScript",
+    "Prisma ORM",
+    "MySQL",
+    "Tailwind CSS"
+  ],
+  "experience": [
+    {
+      "company": "Tech Solutions",
+      "position": "Junior Developer",
+      "startDate": "2024-01",
+      "endDate": "Present",
+      "highlights": [
+        "Architected full-stack web applications using Next.js App Router.",
+        "Integrated AI services for automated document generation and evaluation."
+      ]
+    }
+  ]
+}

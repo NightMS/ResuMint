@@ -1,0 +1,41 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+}
+
+model ResumeVersion {
+  id           String          @id @default(uuid())
+  createdAt    DateTime        @default(now())
+  updatedAt    DateTime        @default(now()) @updatedAt
+  jsonPayload  String          @db.LongText
+  pdfPath      String?
+  atsScore     Int?
+  atsApproved  Boolean?
+  evaluations  AtsEvaluation[]
+  coverLetters CoverLetter[]
+}
+
+model AtsEvaluation {
+  id              String        @id @default(uuid())
+  resumeVersionId String
+  resumeVersion   ResumeVersion @relation(fields: [resumeVersionId], references: [id], onDelete: Cascade)
+  targetRole      String
+  score           Int
+  isApproved      Boolean
+  feedback        String        @db.Text
+  evaluatedAt     DateTime      @default(now())
+
+}
+
+model CoverLetter {
+  id              String        @id @default(uuid())
+  resumeVersionId String
+  resumeVersion   ResumeVersion @relation(fields: [resumeVersionId], references: [id], onDelete: Cascade)
+  targetRole      String
+  companyName     String?
+  content         String        @db.Text
+  createdAt       DateTime      @default(now())
+}

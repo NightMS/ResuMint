@@ -1,36 +1,38 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ResuMint 🚀 (AI Resume & Career Suite)
 
-## Getting Started
+An end-to-end full-stack web application designed to help job seekers manage resume versions, parse PDFs, evaluate ATS (Applicant Tracking System) compatibility, and generate tailored cover letters using AI.
 
-First, run the development server:
+## 📌 Note
+This project was built as a personal portfolio project for career development and resume demonstration purposes.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🛠️ Tech Stack
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+* **Framework:** Next.js (App Router) / React
+* **Language:** TypeScript
+* **Styling:** Tailwind CSS
+* **Database & ORM:** Prisma ORM with SQLite / PostgreSQL
+* **AI Integration:** Google Generative AI (Gemini SDK)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## ✨ Features
 
-## Learn More
+* **Resume Storage & Versioning:** Store, manage, and toggle between multiple versions of your resume with clean database tracking.
+* **AI PDF Parser:** Upload resume PDFs to automatically extract structured data and save them directly to the database.
+* **Live JSON Resume Editor:** Inspect and update resume content in real-time.
+* **ATS Compatibility Checker:** Evaluate how well a resume aligns with a specific job description and receive actionable scores and feedback.
+* **AI Cover Letter Generator:** Automatically draft context-aware, customized cover letters tailored to specific roles and company descriptions.
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🚀 Getting Started
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Prerequisites
+Make sure you have Node.js installed on your machine.
 
-## Deploy on Vercel
+### Installation & Setup
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. **Clone the repository:**
+   ```bash
+   git clone [https://github.com/NightMS/ResuMint](https://github.com/NightMS/ResuMint)
+   cd your-repo-name
