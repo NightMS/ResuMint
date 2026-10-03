@@ -6,13 +6,14 @@ const styles = StyleSheet.create({
   header: { marginBottom: 15, borderBottomWidth: 1, borderBottomColor: "#ccc", paddingBottom: 5 },
   name: { fontSize: 20, fontWeight: "bold" },
   title: { fontSize: 13, color: "#555" },
-  contactRow: { flexDirection: "row", gap: 6, fontSize: 9, color: "#777", marginTop: 4, flexWrap: "wrap" },
+  contactRow: { flexDirection: "row", gap: 6, fontSize: 9, color: "#444", marginTop: 4, flexWrap: "wrap" },
   link: { color: "#2563EB", textDecoration: "none" },
   section: { marginTop: 10 },
   sectionTitle: { fontSize: 13, fontWeight: "bold", borderBottomWidth: 1, borderBottomColor: "#eee", paddingBottom: 2, marginBottom: 5 },
   skillRow: { marginBottom: 3, fontSize: 10 },
   text: { marginBottom: 3 },
-  bullet: { marginLeft: 10, marginBottom: 2 }
+  bullet: { marginLeft: 10, marginBottom: 2 },
+  dateText: { fontSize: 9, color: "#444" } // Added this style with a darker color (#444 instead of #666)
 });
 
 export const ResumePDFDocument = ({ data }: { data: ResumePayload }) => {
@@ -76,7 +77,7 @@ export const ResumePDFDocument = ({ data }: { data: ResumePayload }) => {
                 <Text style={{ fontWeight: "bold" }}>
                   {exp.position} — {exp.company}
                 </Text>
-                <Text style={{ fontSize: 9, color: "#666" }}>
+                <Text style={{ fontSize: 9, color: "#222", fontWeight: "medium" }}>
                   {exp.startDate} - {exp.endDate}
                 </Text>
                 {exp.highlights?.map((h, i) => (
@@ -94,10 +95,21 @@ export const ResumePDFDocument = ({ data }: { data: ResumePayload }) => {
             {visibleProjects.map((proj, index) => (
               <View key={index} style={{ marginBottom: 6 }}>
                 <Text style={{ fontWeight: "bold" }}>{proj.name}</Text>
-                {proj.description && <Text style={styles.text}>{proj.description}</Text>}
-                {proj.highlights?.map((h, i) => (
-                  <Text key={i} style={styles.bullet}>• {h}</Text>
-                ))}
+                {/* Fallback: if highlights exist, map them. Otherwise, split description by newlines */}
+                {proj.highlights && proj.highlights.length > 0 ? (
+                  proj.highlights.map((h, i) => (
+                    <Text key={i} style={styles.bullet}>• {h}</Text>
+                  ))
+                ) : (
+                  proj.description && 
+                  proj.description.split("\n").map((line, i) => {
+                    const cleanLine = line.trim().replace(/^[-•]\s*/, ""); // remove manual hyphens if typed
+                    if (!cleanLine) return null;
+                    return (
+                      <Text key={i} style={styles.bullet}>• {cleanLine}</Text>
+                    );
+                  })
+                )}
               </View>
             ))}
           </View>
@@ -112,7 +124,7 @@ export const ResumePDFDocument = ({ data }: { data: ResumePayload }) => {
                 <Text style={{ fontWeight: "bold" }}>
                   {edu.studyType} in {edu.area}
                 </Text>
-                <Text style={{ fontSize: 9, color: "#666" }}>
+                <Text style={{ fontSize: 9, color: "#222" }}>
                   {edu.institution} ({edu.startDate} - {edu.endDate})
                 </Text>
               </View>
